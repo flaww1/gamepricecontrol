@@ -1,0 +1,19 @@
+{% from "_render_field.html" import render_field %}
+
+{{ form.hidden_tag() }}
+<br>
+{{ form.username.label }}
+{{ frm.useroname }}
+<br>
+{{ form.email.label }}
+{{ form.email }}
+<br>
+{{ form.password.label }}
+{{ form.password }}
+<br>
+{{ form.confirm_password.label }}
+{{ form.confirm_password }}
+<br>
+{{ form.submit }}
+<br>
+Already Have an Account? <a class="ml-2" href="{{ url_for('testLogin') }}">Sign In</a>
