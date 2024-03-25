@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% include 'orderbygenremodal.html' %}
+
+{% block body %}
+
+<body>
+<script>
+
+$(document).ready(function() {
+	
+    function sort(){
+    var game_date = $('#game_Date').val();
+    $.ajax({
+        type: "POST",
+        url: "/sort/",
+        data: { game_date: game_date },
+    }).done(function(data){
+         $('#results-div').html(data.html);
+    });
+}
+});
+ 
+</script>
+	<main class="main-content">
+		<div class="container">
+			<div class="filter-bar">
+				<div class="filter" id="order">
+			
+					<span>
+						<label>Ordenar por:</label>
+						<ul>
+							<button type="button" onclick="sort()">Recente</button>
+							<button type="button" onclick="sort()">Antigo</button>
+					
+						  </ul>
+					</span>
+
+
+				</div> <!-- .filter -->
+				<div id="checkboxes">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#ordenargenero">Ordenar por Género</a></h6>
+
+				</div>
+
+
+			</div> <!-- .filter-bar -->
+
+			<div class="product-list">
+				{% if results %}
+				{% for row in results %}
+				<div class="product">
+					<div class="inner-product">
+						<div class="figure-image">
+							<a href="/game/{{row.id_game}}"><img
+									src="{{url_for('static', filename='images/' + row.game_image)}}"
+									alt="Game + {{row.id_game}}"></a>
+						</div>
+						<h3 class="product-title"><a href="/game/{{row.id_game}}">{{row.game_name}}</a></h3>
+						<p>{{row.game_description | truncate(80) | safe}}</p>
+						<a href="#" class="button">Add to cart</a>
+						<a href="/game/{{row.id_game}}" class="button muted">Ler Detalhes</a>
+					</div>
+				</div> <!-- .product -->
+				{% endfor %}
+				{% endif %}
+			</div> <!-- .product-list -->
+
+
+			<a class="btn btn-info mb-4" href="{{ url_for('index') }}"></a>
+
+			<a class="btn btn-outline-info mb-4" href="{{ url_for('index') }}"></a>
+
+
+		</div> <!-- .container -->
+	</main> <!-- .main-content -->
+
+
+	{% endblock %}
+</body>
+
+
+</html>

@@ -1,0 +1,13 @@
+{% from "_render_field.html" import render_field %}
+
+{{ form.hidden_tag() }}
+
+{{ form.email.label }}
+{{ form.email }}
+
+{{ form.password.label }}
+{{ form.password }}
+
+{{ form.submit }}
+<br>
+Need an Account? <a href="{{ url_for('registerWithout') }}">Sign Up</a>

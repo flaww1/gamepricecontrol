@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<main class="main-content">
+	<div class="container">
+		<div class="page">
+			<section>
+				<header>
+					<h2 class="section-title">Jogos Mais Recentes</h2>
+					<a href="{{url_for('produtos_recent')}}" class="all">Mostrar Todos</a>
+				</header>
+						
+			
+				<div class="product-list">
+					{% for row in recent %}
+					<div class="product">
+						<div class="inner-product">
+							<div class="figure-image">
+								<a href="/game/{{row.id_game}}"></a><img src="{{url_for('static', filename='images/' + row.game_image)}}" alt="Game 1"></a>
+							</div>
+							<h3 class="product-title"><a href="/game/{{row.id_game}}">{{row.game_name}}</a></h3>
+							<small class="price">$19.00</small>
+							<p>{{row.game_description | truncate(80) | safe}}</p>
+							<a href="{{ url_for('listajogos')}}" class="button">Adicionar á lista</a>
+							<a href="/game/{{row.id_game}}" class="button muted">Ver detalhes</a>
+						</div>
+					</div> <!-- .product -->
+					{% endfor %}
+
+				</div> <!-- .product-list -->
+				
+			</section>
+
+			<section>
+				<header>
+					<h2 class="section-title">Jogos em Destaque</h2>
+					<a href="{{url_for('produtos_featured')}}" class="all">Mostrar Todos</a>
+				</header>
+
+				<div class="product-list">
+					{% for row in featured %}
+					<div class="product">
+						<div class="inner-product">
+							<div class="figure-image">
+								<a href="/game/{{row.id_game}}"></a><img src="{{url_for('static', filename='images/' + row.game_image)}}" alt="Game 1"></a>
+							</div>
+							<h3 class="product-title"><a href="/game/{{row.id_game}}">{{row.game_name}}</a></h3>
+							<small class="price">$19.00</small>
+							<p>{{row.game_description | truncate(80) | safe}}</p>
+							<a href="{{ url_for('listajogos')}}" class="button">Adicionar á lista</a>
+							<a href="/game/{{row.id_game}}" class="button muted">Ver detalhes</a>
+						</div>
+					</div> <!-- .product -->
+					{% endfor %}
+				</div> <!-- .product-list -->
+
+			</section>
+		</div>
+	</div> <!-- .container -->
+</main> <!-- .main-content -->
+
+{% endblock %}
+</body>
+
+</html>

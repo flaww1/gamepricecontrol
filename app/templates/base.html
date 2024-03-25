@@ -1,0 +1,179 @@
+{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>GamePriceControl</title>
+
+    <!-- Loading third party fonts -->
+    {{ toastr.include_jquery() }}
+    {{ toastr.include_toastr_css() }}
+    {{ toastr.message() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700|" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/d976c83bbd.js" crossorigin="anonymous"></script>
+    <link href="fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+{% endblock %}
+
+
+<body class="slider-collapse">
+    {{ toastr.include_toastr_js() }}
+    <div id="site-content">
+
+        <div class="site-header">
+            <div class="container">
+                <img src="{{url_for('static', filename='images/')}}" alt="" class="logo">
+                <div class="logo-text">
+                    <h1 class="site-title">GamePriceControl</h1>
+                    <small class="site-description">Bem Vindo! Pesquisa o preço dos teus jogos!</small>
+                </div>
+                </a> <!-- #branding -->
+
+                <div class="right-section pull-right">
+
+                    {% if current_user.is_anonymous %}
+                    <a href="{{ url_for('registo')}}" class="cart"><i class="icon-cart"></i> Registo</a>
+                    <a href="{{ url_for('login')}}" class="cart"><i class="icon-cart"></i> Login</a>
+                    {% else %}
+                    <a href="{{ url_for('listajogos')}}" class="cart"><i class="icon-cart"></i> Lista de Jogos</a>
+                    <a href="{{ url_for('logout')}}" class="cart"><i class="icon-cart"></i> Logout</a>
+                    {% if current_user.is_admin %}
+                    <a href="{{ url_for('tabelas')}}" class="cart"><i class="icon-cart"></i> Dashboard</a>
+                    {% endif %}
+                    {% endif %}
+
+                </div> <!-- .right-section -->
+
+                <div class="main-navigation">
+                    <button class="toggle-menu"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item home current-menu-item"><a href="{{ url_for('index')}}"><i
+                                    class="fas fa-home"></i></a></li>
+                        </li>
+                        <li class="menu-item"><a href="{{ url_for('produtos_ps')}}">Playstation</a></li>
+                        <li class="menu-item"><a href="{{ url_for('produtos_xbox')}}">XBOX</a></li>
+                        <li class="menu-item"><a href="{{ url_for('produtos_pc')}}">PC</a></li>
+                        <li class="menu-item"><a href="{{ url_for('produtos_nintendo')}}">Nintendo</a></li>
+
+
+                    </ul> <!-- .menu -->
+
+                    <form action="{{url_for('pesquisa')}}">
+                        <div class="search-form">
+                            <label><i class="fas fa-search"></i></label>
+                            
+                            <input type=text name="search" placeholder="Pesquisa...">
+
+                        </div> <!-- .search-form -->
+                    </form>
+
+
+
+                    <div class="mobile-navigation"></div> <!-- .mobile-navigation -->
+                </div> <!-- .main-navigation -->
+            </div> <!-- .container -->
+        </div> <!-- .site-header -->
+       
+        
+
+        {% block body %}
+
+        {% endblock %}
+
+
+
+
+        <div class="site-footer">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Information</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Site map</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div> <!-- .widget -->
+                    </div> <!-- column -->
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">Consumer Service</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Secure</a></li>
+                                <li><a href="#">Shipping &amp; Returns</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Orders &amp; Returns</a></li>
+                                <li><a href="#">Group Sales</a></li>
+                            </ul>
+                        </div> <!-- .widget -->
+                    </div> <!-- column -->
+                    <div class="col-md-2">
+                        <div class="widget">
+                            <h3 class="widget-title">My Account</h3>
+                            <ul class="no-bullet">
+                                <li><a href="#">Login/Register</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Order Tracking</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div> <!-- .widget -->
+                    </div> <!-- column -->
+                    <div class="col-md-6">
+                        <div class="widget">
+                            <h3 class="widget-title">Junte-se á nossa newsletter</h3>
+                            <form action="#" class="newsletter-form">
+                                <input type="text" placeholder="Enter your email...">
+                                <input type="submit" value="Subsribe">
+                            </form>
+                        </div> <!-- .widget -->
+                    </div> <!-- column -->
+                </div><!-- .row -->
+                Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> from
+                <a href="https://www.flaticon.com/br/" title="Flaticon"> www.flaticon.com</a>
+                <div class="colophon">
+                    <div class="copy">Copyright 2014 Company name. Designed by Themezy. All rights reserved.</div>
+                    <div class="social-links square">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div> <!-- .social-links -->
+                </div> <!-- .colophon -->
+            </div> <!-- .container -->
+        </div> <!-- .site-footer -->
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+
+
+
+</body>
+
+</html>

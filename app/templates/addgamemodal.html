@@ -1,0 +1,78 @@
+{% block content %}
+<div id="addgamemodal" class="modal fade" role="dialog" enctype="multipart/form-data">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Adicionar Jogo</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{{url_for('adicionar')}}" method="POST">
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Name:</label>
+            <input type="text" class="form-control" name="name" required="1">
+          </div>
+          
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Image:</label>
+            <input type="file" class="form-control" name="image" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 1:</label>
+            <input type="file" class="form-control" name="preview1" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 2:</label>
+            <input type="file" class="form-control" name="preview2" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 3:</label>
+            <input type="file" class="form-control" name="preview3" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Description:</label>
+            <textarea class="form-control" rows = "5" cols = "50" name="description" ></textarea>
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Rating:</label>
+            <input type="number" class="form-control" name="rating" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Date:</label>
+            <input type="date" class="form-control" name="date" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Video:</label>
+            <input type="text" class="form-control" name="video" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Review Video:</label>
+            <input type="text" class="form-control" name="review" required="1">
+          </div>            
+        <label style="font-weight: bolder;">Game Genre:</label>
+        <br>
+          {% for row in genres %}
+          <input type="checkbox" id="id_{{row.name_gen}}" value="{{row.id_gen}}"  name="genres">
+          <label for="id_{{row.name_gen}}">{{row.name_gen}}  ||</label>
+          {% endfor %}   
+        <br>
+        <br>
+       <label style="font-weight: bolder;">Game SubPlatforms:</label> 
+        <br>
+          {% for row in subplatforms %}
+          <input type="checkbox" id="id_{{row.name_subplat}}" value="{{row.id_subplat}}" name="subplatforms">
+          <label for="id_{{row.name_subplat}}">{{row.name_subplat}}  ||</label>
+          {% endfor %}          
+                 
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Adicionar Jogo</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

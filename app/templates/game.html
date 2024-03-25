@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<main class="main-content">
+	<div class="container">
+		<div class="page">
+
+			<div class="entry-content">
+				<div class="row">
+					<div class="col-sm-6 col-md-4">
+						<div class="product-images">
+
+							<figure class="large-image">
+								<a href="{{url_for('static', filename='images/' + info.game_image)}}">
+									<img src="{{url_for('static', filename='images/' + info.game_image)}}" alt=""></a>
+							</figure>
+							<div class="thumbnails">
+								<a href="{{url_for('static', filename='images/' + info.game_preview1)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview1)}}" alt=""></a>
+								<a href="{{url_for('static', filename='images/' + info.game_preview2)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview2)}}" alt=""></a>
+								<a href="{{url_for('static', filename='images/' + info.game_preview3)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview3)}}" alt=""></a>
+
+																		
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-6 col-md-8">
+						<h2 style="font-weight: bolder;" class="entry-title">{{info.game_name}}</h2>
+						<small class="price">$190.00</small>
+
+						<p>{{info.game_description}}
+
+						</p>
+						<small class="date">{{info.game_date}}</small>
+						<div class="addtocart-bar">
+							<form action="#">
+
+								<input type="submit" value="Adicionar á lista">
+							</form>
+
+							<div class="social-links square">
+								<strong>Partilhe</strong>
+								<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+								<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+								<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+								<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h2 style="font-weight: bolder;"class="section-title">Trailer do Jogo</h2>
+			<iframe width="1200" height="600" src="{{info.game_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<br>
+			<br>
+			<br>
+			
+			<h2 style="font-weight: bolder;" class="section-title">Review do Jogo</h2>
+			<iframe width="1200" height="600" src="{{info.game_review}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+			<section>
+				<header>
+					<h2 style="font-weight: bolder;" class="section-title">Jogos Similares</h2>
+				</header>
+				<div class="product-list">
+					{% for row in similar %}
+					<div class="product">
+						<div class="inner-product">
+							<div class="figure-image">
+								<img src="{{url_for('static', filename='images/' + row.game_image)}}"
+									alt="Game + {{row.id_game}}">
+							</div>
+							<h3 class="product-title"><a
+								href="/game/{{row.id_game}}"">{{row.game_name}}</a>
+							</h3>
+							<small class="price">$20.00</small>
+							<p>{{row.game_description | truncate(80) | safe}}</p>
+							<a href="#" class="button">Adicionar á lista</a>
+							<a href="/game/{{row.id_game}}" class="button muted">Ver detalhes</a>
+						</div>
+					</div> <!-- .product -->
+					{% endfor %}
+
+				</div> <!-- .product-list -->
+			</section>
+
+
+		</div>
+	</div> <!-- .container -->
+</main> <!-- .main-content -->
+
+{% endblock %}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+{% block content %}
+{% for row in games %}
+<div id="editgamemodal{{row.id_game}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Editar Jogo</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{{url_for('editar')}}" method="POST">
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Name:</label>
+            <input type="hidden" name="id" value="{{row.id_game}}">
+            <input type="text" class="form-control" name="name" value="{{row.game_name}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Image:</label>
+            <input type="file" class="form-control" name="image" value="{{row.game_image}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 1:</label>
+            <input type="file" class="form-control" name="preview1" value="{{row.game_preview1}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 2:</label>
+            <input type="file" class="form-control" name="preview2" value="{{row.game_preview2}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Preview 3:</label>
+            <input type="file" class="form-control" name="preview3" value="{{row.game_preview3}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Description:</label>
+            <textarea class="form-control" rows="5" cols="50" name="description">{{row.game_description}}</textarea>
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Rating:</label>
+            <input type="number" class="form-control" name="rating" value="{{row.game_rating}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;"> Game Date:</label>
+            <input type="date" class="form-control" name="date" value="{{row.game_date}}" required="1">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: bolder;">Game Video:</label>
+            <input type="text" class="form-control" name="video" value="{{row.game_video}}"required="1">
+          </div>  
+          <div class="form-group">
+            <label >Game Review Video:</label>
+            <input type="text" class="form-control" name="review" value="{{row.game_review}}"required="1">
+          </div>            
+          <button class="btn btn-primary" type="submit">Editar </button>
+      </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
