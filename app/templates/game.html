@@ -3,127 +3,103 @@
 
 {% block body %}
 
-					<div class="breadcrumbs">
-						<div class="container">
-							<a href="index.html">Home</a>
-							<a href="products.html">Play Station Games</a>
-							<span>Need for Speed Rivals</span>
-						</div>
-					</div>
-				</div> <!-- .container -->
-			</div> <!-- .site-header -->
-			
-			<main class="main-content">
-				<div class="container">
-					<div class="page">
-						
-						<div class="entry-content">
-							<div class="row">
-								<div class="col-sm-6 col-md-4">
-									<div class="product-images">
-										<figure class="large-image">
-											<a href="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}"><img src="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}" alt=""></a>
-										</figure>
-										<div class="thumbnails">
-											<a href="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}"><img src="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}" alt=""></a>
-											<a href="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}"><img src="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}" alt=""></a>
-											<a href="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}"><img src="{{url_for('static', filename='images/nfsrivalscapaps4.jpg')}}" alt=""></a>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-8">
-									<h2 class="entry-title">Need for Speed Rivals</h2>
-									<small class="price">$190.00</small>
 
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-									<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.</p>
-									<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod.</p>
+<main class="main-content">
+	<div class="container">
+		<div class="page">
 
-									<div class="addtocart-bar">
-										<form action="#">
-											
-											<input type="submit" value="Adicionar á lista">
-										</form>
+			<div class="entry-content">
+				<div class="row">
+					<div class="col-sm-6 col-md-4">
+						<div class="product-images">
 
-										<div class="social-links square">
-											<strong>Share</strong>
-											<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-											<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-											<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-											<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-										</div>
-									</div>
-								</div>
+							<figure class="large-image">
+								<a href="{{url_for('static', filename='images/' + info.game_image)}}">
+									<img src="{{url_for('static', filename='images/' + info.game_image)}}" alt=""></a>
+							</figure>
+							<div class="thumbnails">
+								<a href="{{url_for('static', filename='images/' + info.game_preview1)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview1)}}" alt=""></a>
+								<a href="{{url_for('static', filename='images/' + info.game_preview2)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview2)}}" alt=""></a>
+								<a href="{{url_for('static', filename='images/' + info.game_preview3)}}"><img
+										src="{{url_for('static', filename='images/' + info.game_preview3)}}" alt=""></a>
+
+																		
 							</div>
 						</div>
-						
-						<section>
-							<header>
-								<h2 class="section-title">Jogos Similares</h2>
-							</header>
-							<div class="product-list">
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<img src="icons/game-1.jpg" alt="Game 1">
-										</div>
-										<h3 class="product-title"><a href="#">Alpha Protocol</a></h3>
-										<small class="price">$20.00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Adicionar á lista</a>
-										<a href="#" class="button muted">Ver detalhes</a>
-									</div>
-								</div> <!-- .product -->
-							
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<img src="icons/game-2.jpg" alt="Game 2">
-										</div>
-										<h3 class="product-title"><a href="#">Grand Theft Auto V</a></h3>
-										<small class="price">$20.00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Adicionar á lista</a>
-										<a href="#" class="button muted">Ver detalhes</a>
-									</div>
-								</div> <!-- .product -->
-							
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<img src="icons/game-3.jpg" alt="Game 3">
-										</div>
-										<h3 class="product-title"><a href="#">Need for Speed rivals</a></h3>
-										<small class="price">$20.00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Adicionar á lista</a>
-										<a href="#" class="button muted">Ver detalhes</a>
-									</div>
-								</div> <!-- .product -->
-							
-								<div class="product">
-									<div class="inner-product">
-										<div class="figure-image">
-											<img src="icons/game-4.jpg" alt="Game 4">
-										</div>
-										<h3 class="product-title"><a href="#">Big game hunter</a></h3>
-										<small class="price">$20.00</small>
-										<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-										<a href="#" class="button">Adicionar á lista</a>
-										<a href="#" class="button muted">Ver detalhes</a>
-									</div>
-								</div> <!-- .product -->
-								
-							</div> <!-- .product-list --></section>
-
-						
 					</div>
-				</div> <!-- .container -->
-			</main> <!-- .main-content -->
-	{% endblock %}
+					
+					<div class="col-sm-6 col-md-8">
+						<h2 style="font-weight: bolder;" class="entry-title">{{info.game_name}}</h2>
+						<small class="price">$190.00</small>
 
-		
-		
-	</body>
+						<p>{{info.game_description}}
+
+						</p>
+						<small class="date">{{info.game_date}}</small>
+						<div class="addtocart-bar">
+							<form action="#">
+
+								<input type="submit" value="Adicionar á lista">
+							</form>
+
+							<div class="social-links square">
+								<strong>Partilhe</strong>
+								<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+								<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+								<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+								<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h2 style="font-weight: bolder;"class="section-title">Trailer do Jogo</h2>
+			<iframe width="1200" height="600" src="{{info.game_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<br>
+			<br>
+			<br>
+			
+			<h2 style="font-weight: bolder;" class="section-title">Review do Jogo</h2>
+			<iframe width="1200" height="600" src="{{info.game_review}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+			<section>
+				<header>
+					<h2 style="font-weight: bolder;" class="section-title">Jogos Similares</h2>
+				</header>
+				<div class="product-list">
+					{% for row in similar %}
+					<div class="product">
+						<div class="inner-product">
+							<div class="figure-image">
+								<img src="{{url_for('static', filename='images/' + row.game_image)}}"
+									alt="Game + {{row.id_game}}">
+							</div>
+							<h3 class="product-title"><a
+								href="/game/{{row.id_game}}"">{{row.game_name}}</a>
+							</h3>
+							<small class="price">$20.00</small>
+							<p>{{row.game_description | truncate(80) | safe}}</p>
+							<a href="#" class="button">Adicionar á lista</a>
+							<a href="/game/{{row.id_game}}" class="button muted">Ver detalhes</a>
+						</div>
+					</div> <!-- .product -->
+					{% endfor %}
+
+				</div> <!-- .product-list -->
+			</section>
+
+
+		</div>
+	</div> <!-- .container -->
+</main> <!-- .main-content -->
+
+{% endblock %}
+
+
+
+</body>
 
 </html>

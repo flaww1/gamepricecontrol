@@ -1,169 +1,80 @@
 {% extends 'base.html' %}
-
+{% include 'orderbygenremodal.html' %}
 
 {% block body %}
 
 <body>
+<script>
 
+$(document).ready(function() {
+	
+    function sort(){
+    var game_date = $('#game_Date').val();
+    $.ajax({
+        type: "POST",
+        url: "/sort/",
+        data: { game_date: game_date },
+    }).done(function(data){
+         $('#results-div').html(data.html);
+    });
+}
+});
+ 
+</script>
 	<main class="main-content">
 		<div class="container">
-			<div class="page">
-				<div class="filter-bar">
-					<div class="filter">
-						<span>
-							<label>Ordenar por:</label>
-							<select name="#">
-								<option value="#">Mais Recentes</option>
-								<option value="#">Mais Antigos</option>
-								<option value="#">Maior Preço</option>
-								<option value="#">Menor Preço</option>
-							</select>
-
-						</span>
+			<div class="filter-bar">
+				<div class="filter" id="order">
+			
+					<span>
+						<label>Ordenar por:</label>
+						<ul>
+							<button type="button" onclick="sort()">Recente</button>
+							<button type="button" onclick="sort()">Antigo</button>
+					
+						  </ul>
+					</span>
 
 
-					</div> <!-- .filter -->
-					<div id="checkboxes">
-						<span>
-							<label>Géneros:</label>
+				</div> <!-- .filter -->
+				<div id="checkboxes">
+					<a href="" class="btn btn-primary" data-toggle="modal" data-target="#ordenargenero">Ordenar por Género</a></h6>
 
-							<input type="checkbox"> Ação </input>
-							<input type="checkbox"> Corrida</input>
-							<input type="checkbox"> Drama</input>
-							<input type="checkbox"> Desporto</input>
-							<input type="checkbox"> Ação </input>
-							<input type="checkbox"> Corrida</input>
-							<input type="checkbox"> Drama</input>
-							<input type="checkbox"> Desporto</input>
-							<input type="checkbox"> Ação </input>
-							<input type="checkbox"> Corrida</input>
-							<input type="checkbox"> Drama</input>
-							<input type="checkbox"> Desporto</input>
-
-						</span>
-					</div>
-
-
-				</div> <!-- .filter-bar -->
-
-				<div class="product-list">
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-1.jpg" alt="Game 1"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Alpha Protocol</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-2.jpg" alt="Game 2"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Grand Theft Auto V</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-3.jpg" alt="Game 3"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Need for Speed rivals</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-4.jpg" alt="Game 4"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Big game hunter</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-5.jpg" alt="Game 1"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Watch Dogs</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-6.jpg" alt="Game 2"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Mortal Kombat X</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-7.jpg" alt="Game 3"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Metal Gear Solid V</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-
-					<div class="product">
-						<div class="inner-product">
-							<div class="figure-image">
-								<a href="game.html"><img src="icons/game-8.jpg" alt="Game 4"></a>
-							</div>
-							<h3 class="product-title"><a href="#">Nascar '14</a></h3>
-							<p>Lorem ipsum dolor sit consectetur adipiscing elit do eiusmod tempor...</p>
-							<a href="#" class="button">Add to cart</a>
-							<a href="#" class="button muted">Read Details</a>
-						</div>
-					</div> <!-- .product -->
-
-				</div> <!-- .product-list -->
-
-				<div class="pagination-bar">
-					<div class="pagination">
-						<a href="#" class="page-number"><i class="fa fa-angle-left"></i></a>
-						<span class="page-number current">1</span>
-						<a href="#" class="page-number">2</a>
-						<a href="#" class="page-number">3</a>
-						<a href="#" class="page-number">...</a>
-						<a href="#" class="page-number">12</a>
-						<a href="#" class="page-number"><i class="fa fa-angle-right"></i></a>
-					</div> <!-- .pagination -->
 				</div>
-			</div>
+
+
+			</div> <!-- .filter-bar -->
+
+			<div class="product-list">
+				{% if results %}
+				{% for row in results %}
+				<div class="product">
+					<div class="inner-product">
+						<div class="figure-image">
+							<a href="/game/{{row.id_game}}"><img
+									src="{{url_for('static', filename='images/' + row.game_image)}}"
+									alt="Game + {{row.id_game}}"></a>
+						</div>
+						<h3 class="product-title"><a href="/game/{{row.id_game}}">{{row.game_name}}</a></h3>
+						<p>{{row.game_description | truncate(80) | safe}}</p>
+						<a href="#" class="button">Add to cart</a>
+						<a href="/game/{{row.id_game}}" class="button muted">Ler Detalhes</a>
+					</div>
+				</div> <!-- .product -->
+				{% endfor %}
+				{% endif %}
+			</div> <!-- .product-list -->
+
+
+			<a class="btn btn-info mb-4" href="{{ url_for('index') }}"></a>
+
+			<a class="btn btn-outline-info mb-4" href="{{ url_for('index') }}"></a>
+
+
 		</div> <!-- .container -->
 	</main> <!-- .main-content -->
 
-	
+
 	{% endblock %}
 </body>
 

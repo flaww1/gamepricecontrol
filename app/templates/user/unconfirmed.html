@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmação de Conta{% endblock %}
+
+{% block body %}
+<div style="margin-left: 2.5em; font-size: 22px;" class="page-header">
+<br>
+   <h1>
+       Olá, {{ current_user.username }}!
+   </h1>
+   <h3>A sua conta ainda não foi confirmada.</h3>
+   <p>
+       <u>Antes de ser capaz de acessar a todos os conteudos do website tem que confirmar a sua conta.
+        Verifique a sua caixa de correio, deverá ter recebido um link de confirmação de conta.</u>
+   </p>
+   <p style="font-weight: bolder;">
+       Não recebeu o email de confirmação? 
+       <a style="font-weight: bolder;" href="{{ url_for('resend_confirmation') }}"><u>Clique Aqui</a></u>
+       <p style="font-weight: bolder;">
+       Caso não queira confirmar a conta de momento e deseja prosseguir para o website: 
+       <a style="font-weight: bolder;" href="{{ url_for('index') }}"><u>Clique Aqui</a></u>
+   </p>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+  
+</div>
+{% endblock %}
+
+

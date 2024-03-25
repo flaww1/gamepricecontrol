@@ -1,0 +1,102 @@
+{% extends 'dashboardbase.html' %}
+{% include 'addgamemodal.html' %}
+{% include 'editgamemodal.html' %}
+
+{% block body %}
+    
+   <!-- Begin Page Content -->
+   <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tabelas</h1>
+    <p class="mb-4">Base de dados CRUD</a>.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"> Tabela de Jogos
+          <a href="" class="btn btn-primary" data-toggle="modal" data-target="#addgamemodal">Adicionar Jogo</a></h6>
+        
+      </div>
+      {% with messages = get_flashed_messages() %}
+ 
+                {% if messages %}
+ 
+                {% for message in messages %}
+ 
+                <div class="alert alert-success alert-dismissable" role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                         <span aria-hidden="true">x</span>
+                     </button>
+  
+                {{message}}
+ 
+                </div>
+  
+                {% endfor %}
+ 
+                {% endif %}
+        {% endwith %}
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+ 
+                <th>Game ID</th>
+                <th>Game Name</th>
+                <th>Game Image</th>
+                <th>Game Preview1</th>
+                <th>Game Preview2</th>
+                <th>Game Preview3</th>
+                <th>Game Description</th>
+                <th>Game Rating</th>
+                <th>Game Date</th>
+
+            </tr>
+
+
+           {% for row in games %}
+            <tr>
+                <td>{{row.id_game}}</td>
+                <td>{{row.game_name}}</td>
+                <td>{{row.game_image}}</td>
+                <td>{{row.game_preview1}}</td>
+                <td>{{row.game_preview2}}</td>
+                <td>{{row.game_preview3}}</td>
+                <td>{{row.game_description | truncate(80) | safe}}</td>
+                <td>{{row.game_rating}}</td>
+                <td>{{row.game_date}}</td>
+                
+
+                <td>
+                    <a href="/editar/{{row.id_game}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editgamemodal{{row.id_game}}">Editar</a>
+                    <a href="/deletar/{{row.id_game}}" class="btn btn-danger btn-xs" onclick="return confirm('Tem a certeza?')">Deletar</a>
+
+
+                </td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+
+
+{% endblock %}

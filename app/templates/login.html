@@ -1,96 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
 
- <!-- {% from "_render_field.html" import render_field %}
+<head>
 
-    <div class="overlay"></div>
-    <div class="auth-popup popup">
-        <a href="#" class="close"><i class="fa fa-close"></i></a>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="section-title">Login</h2>
-                <form method="POST" action="{{ url_for('login')}}">
-                    {{ form.csrf_token }}
-                     {{ render_field(form.username)}}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-                     {{ render_field(form.password)}}
-                    
-                    
-                    <input type="submit" value = "submit">
-                </form> -->
-                
+  <title>Login</title>
 
- {% from "_render_field.html" import render_field %}
+  <!-- Custom fonts for this template-->
+  <link href="{{ url_for ('static', filename= 'vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!--Modal: Login / Register Form-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <!------ Include the above in your HEAD tag ---------->
-    
-    {% block content %}
+  <!-- Custom styles for this template-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.min.css') }}">
 
-    <div class="container">
+</head>
+{% from "_render_field.html" import render_field %}
+{% block content %}
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-login">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link">Login</a>
-                                </div>
-                                <div class="col-xs-6">
-                                    <a href="#" id="register-form-link">Register</a>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form id="login-form" action="" method="POST" role="form" style="display: block;">
-                                        {{ form.csrf_token }}
-                                        {{ render_field(form.username, placeholder=form.username.label.text)}}
-                                        {{ render_field(form.password, placeholder=form.password.label.text)}}
-                                   
-                                        
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="text-center">
-                                                        <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <form id="register-form" action="" method="post" role="form" style="display: none;">
-                                        {{ render_field(form.username, placeholder=form.username.label.text)}}
-                                        {{ render_field(form.email, placeholder=form.email.label.text)}}
-                                        {{ render_field(form.password, placeholder=form.password.label.text)}}
-                                        {{ render_field(form.confirmpassword, placeholder=form.confirmpassword.label.text)}}
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   
-    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  </div>
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                  <ul>
+                      {% for message in messages %}
+                      <li>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+                  {% endwith %}
+                  <form class="user" action="/login" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                      {{ render_field(form.email,class="form-control form-control-user", id="email",  placeholder="Enter Email Address...")}}   
 
-    {% endblock %}
+                     <!--NOTA: aria-describedby="emailHelp"--> 
+
+                    </div>
+                    <div class="form-group">
+                      {{ render_field(form.password, type="password", class="form-control form-control-user", id="password", placeholder="Enter Password...")}}
+                     
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        {{ form.remember_me(type="checkbox", class="custom-control-input", id="customCheck")}}
+                        {{ form.remember_me.label(class="custom-control-label", for="customCheck")}}
+                        
+                       
+                      </div>
+                    </div>
+                    {{ form.submit(class="btn btn-primary btn-user btn-block")}}
+                   
+                    </a>
+                    <hr>
+                    <a href="{{ url_for('index')}}" class="btn btn-google btn-user btn-block">
+                      <i class="fab fa-google fa-fw"></i> Login with Google
+                    </a>
+                    <a href="{{ url_for('index')}}" class="btn btn-facebook btn-user btn-block">
+                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                    </a>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="{{ url_for('forgot_password')}}">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="{{ url_for('register')}}">Create an Account!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+{% endblock %}
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/style2.min.js"></script>
+
+</body>
+
+</html>

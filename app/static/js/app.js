@@ -1,6 +1,33 @@
 (function($, document, window){
 	
+
 	$(document).ready(function(){
+
+		(function($) {
+			
+			showSwal = function(type) {
+			'use strict';
+			if (type === 'auto-close') {
+			swal({
+			title: 'Auto close alert!',
+			text: 'I will close in 2 seconds.',
+			timer: 2000,
+			button: false
+			}).then(
+			function() {},
+			// handling the promise rejection
+			function(dismiss) {
+			if (dismiss === 'timer') {
+			console.log('I was closed by the timer')
+			}
+			}
+			)
+			}else{
+			swal("Error occured !");
+			}
+			}
+			
+			})(jQuery);
 
 		// Cloning main navigation for mobile menu
 		$(".mobile-navigation").append($(".main-navigation .menu").clone());
@@ -10,10 +37,23 @@
 			$(".mobile-navigation").slideToggle();
 		});
 
-		$(".home-slider").flexslider({
-			controlNav: true,
-			directionNav: false
-		});
+		var swiper = new Swiper('.swiper-container', {
+			spaceBetween: 30,
+			centeredSlides: true,
+			autoplay: {
+			  delay: 4500,
+			  disableOnInteraction: false,
+			},
+			pagination: {
+			  el: '.swiper-pagination',
+			  clickable: true,
+			},
+			navigation: {
+			  nextEl: '.swiper-button-next',
+			  prevEl: '.swiper-button-prev',
+			},
+		  });
+		
 
 		$(".login-button").on("click",function(){
 			$(".overlay").fadeIn();
@@ -47,4 +87,14 @@
 
 	});
 
+
+
+
+
+
+
+
+
+
+	
 })(jQuery, document, window);
